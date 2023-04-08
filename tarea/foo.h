@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <cmath>
 using namespace std;
 
 class Matriz2D{
@@ -12,6 +12,7 @@ friend Matriz2D operator+(const Matriz2D&, float);
 friend Matriz2D operator-(const Matriz2D&, float);
 friend Matriz2D operator*(const Matriz2D&, float);
 friend Matriz2D operator/(const Matriz2D&, float);
+
 public:
     Matriz2D();
     Matriz2D(int);
@@ -22,6 +23,9 @@ public:
     float get(int, int);
     int getFilas();
     int getColumnas();
+
+    Matriz2D& operator=(const Matriz2D&);
+
 private:
     float** ptr;
     int filas;
