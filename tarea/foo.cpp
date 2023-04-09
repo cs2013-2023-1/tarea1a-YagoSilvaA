@@ -77,9 +77,9 @@ Matriz2D::Matriz2D(Matriz2D&& m): filas(m.filas), columnas(m.columnas), ptr(m.pt
 
 Matriz2D t(Matriz2D& m){
     // Transpuesta de una matriz
-    Matriz2D tr(m.getFilas(),m.getColumnas());
-    for(int i = 0; i<tr.getFilas();i++){
-        for(int j = 0; j<tr.getColumnas();j++){
+    Matriz2D tr(m.filas,m.columnas);
+    for(int i = 0; i<tr.filas;i++){
+        for(int j = 0; j<tr.columnas;j++){
             tr.ptr[i][j] = m.ptr[j][i];
         }
 
@@ -188,7 +188,6 @@ Matriz2D operator*(const Matriz2D& m, float n){
 
 Matriz2D operator/(const Matriz2D& m, float n){
     // Sobrecarga del operador /
-    // Sobrecarga del operador -
     Matriz2D resultado(m.filas, m.columnas);
 
     for (int i = 0; i < m.filas; i++) {
