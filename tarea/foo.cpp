@@ -13,7 +13,7 @@ Matriz2D::Matriz2D(): filas(3), columnas(3){
         // Inicializar la matriz dinamica (ptr) con numeros aleatorios entre 0 y 1
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
-                float random = round((float)(rand()/(float)RAND_MAX)*100)/100;
+                float random = (float)(rand()/(float)RAND_MAX);
 
                 ptr[i][j] = random;
             }
@@ -29,7 +29,7 @@ Matriz2D::Matriz2D(int n): filas(n),columnas(n){
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
 
-            float random = round((float)(rand()/(float)RAND_MAX)*100)/100; // random con 2 decimales
+            float random = (float)(rand()/(float)RAND_MAX); // random con 2 decimales
 
             ptr[i][j] = random;
         }
@@ -47,7 +47,7 @@ Matriz2D::Matriz2D(int n, int m): filas(n),columnas(m){
     // Inicializar la matriz dinamica (ptr) con numeros aleatorios entre 0 y 1
     for(int i = 0; i < n; i++){
         for(int j = 0; j < m; j++){
-            float random = round((float)(rand()/(float)RAND_MAX)*100)/100;
+            float random = (float)(rand()/(float)RAND_MAX);
 
             ptr[i][j] = random;
         }
@@ -201,16 +201,9 @@ Matriz2D operator/(const Matriz2D& m, float n){
 
 Matriz2D& Matriz2D::operator=(const Matriz2D& m) {
     if (this == &m) {
-        return *this;  // Check for self-assignment
+        return *this;
     }
 
-    // Deallocate current memory
-    for (int i = 0; i < filas; i++) {
-        delete[] ptr[i];
-    }
-    delete[] ptr;
-
-    // Allocate new memory for the copy
     filas = m.filas;
     columnas = m.columnas;
     ptr = new float*[filas];
