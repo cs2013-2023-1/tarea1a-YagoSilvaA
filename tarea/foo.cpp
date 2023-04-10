@@ -80,7 +80,7 @@ Matriz2D t(Matriz2D& m){
     Matriz2D tr(m.filas,m.columnas);
     for(int i = 0; i<tr.filas;i++){
         for(int j = 0; j<tr.columnas;j++){
-            tr.ptr[i][j] = m.ptr[j][i];
+            tr.ptr[j][i] = m.ptr[i][j];
         }
 
     }
@@ -138,11 +138,11 @@ Matriz2D operator*(const Matriz2D& m1, const Matriz2D& m2){
     Matriz2D resultado(m1.filas,m2.columnas);
     for(int i = 0; i<m1.filas;i++){
         for(int j = 0; j<m2.columnas;j++){
-            float prod = 0;
+            
             for(int k = 0; k<m1.columnas;k++){
-                prod += m1.ptr[i][k] * m2.ptr[k][j];
+                resultado.ptr[i][j] += m1.ptr[i][k] * m2.ptr[k][j];
             }
-            resultado.ptr[i][j] = prod;
+
         }
     }
     return resultado;
@@ -179,7 +179,7 @@ Matriz2D operator*(const Matriz2D& m, float n){
 
     for (int i = 0; i < m.filas; i++) {
         for (int j = 0; j < m.columnas; j++) {
-            resultado.ptr[i][j] = m.ptr[i][j] - n;
+            resultado.ptr[i][j] = m.ptr[i][j] * n;
         }
     }
 
